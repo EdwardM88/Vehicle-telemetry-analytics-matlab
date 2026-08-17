@@ -26,17 +26,17 @@ Modern vehicle diagnostics and performance engineering rely heavily on clean, ti
 
 
 
-\* \*\*Multi-Node JSONL Stream Ingestion:\*\* Parses nested telemetry packets containing engine parameters (`RPM`, `Vehicle Speed`, `Coolant/Oil Temperatures`, `Engine Load`) and inertial IMU data (`G-Force`).
+*Multi-Node JSONL Stream Ingestion:\*\* Parses nested telemetry packets containing engine parameters (`RPM`, `Vehicle Speed`, `Coolant/Oil Temperatures`, `Engine Load`) and inertial IMU data (`G-Force`).
 
-\* \*\*Time-Series Synchronization:\*\* Reconstructs continuous time domains and structures raw asynchronous data into high-performance MATLAB `timetable` objects.
+*Time-Series Synchronization:\*\* Reconstructs continuous time domains and structures raw asynchronous data into high-performance MATLAB `timetable` objects.
 
-\* \*\*Digital Signal Processing (DSP):\*\* 
+*Digital Signal Processing (DSP):\*\* 
 
-&#x20; \* Implements Moving Average filtering (`movmean`) to denoise high-frequency vibrations from MEMS accelerometer signals.
+&#x20; * Implements Moving Average filtering (`movmean`) to denoise high-frequency vibrations from MEMS accelerometer signals.
 
-&#x20; \* Employs 1D Median Filtering (`medfilt1`) to suppress transient gear-shifting chatter during clutch engagement/disengagement.
+&#x20; * Employs 1D Median Filtering (`medfilt1`) to suppress transient gear-shifting chatter during clutch engagement/disengagement.
 
-\* \*\*Automated Transmission Gear Detection:\*\*
+*Automated Transmission Gear Detection:\*\*
 
 &#x20; \* Computes the continuous transmission ratio:
 
