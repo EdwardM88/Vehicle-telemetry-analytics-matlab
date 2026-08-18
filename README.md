@@ -83,6 +83,33 @@ flowchart TD
     style D fill:#334155,stroke:#f59e0b,stroke-width:1px,color:#fff
     style H fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff
 ```
+** Operating diagram for [ESP32-OBD2-Telemetry-System]project
+```mermaid
+flowchart TD
+    subgraph EDGE_LAYER ["Hardware & Edge Layer"]
+        direction LR
+        A["OBD-II port on car"]
+        B["ESP32 (Master Node)<br/>• ADXL Accelerometer<br/>• G-Force Sampling"]
+        A -- "CAN H - pin 4 on OBD-II port"<br/> CAN L -pin 14 on OBD-II port--> B
+        B --> C["ESP32 Data Aggregator<br/>• Sync Epoch timestamp_ms<br/>• JSONL Serialization"]
+    end
+
+    C --> D[("measurement_real_simulator.json<br/>(Time-Series Dataset)")]
+
+    subgraph MATLAB_PIPELINE ["MATLAB Analytics Pipeline"]
+        direction TB
+        D --> E["load_telemetry.m<br/>• Stream JSON Parsing<br/>• Moving Average DSP<br/>• Timetable Construction"]
+        E --> F["calculate_gears.m<br/>• Instantaneous Ratio (RPM/Speed)<br/>• Dynamic Threshold Classification<br/>• 1D Median Filter (Clutch Smoothing)"]
+        F --> G["generate_report.m<br/>• Session KPI Aggregation<br/>• 300 DPI Figure Export<br/>• DOM Engine PDF Compilation"]
+    end
+
+    G --> H["Vehicle_Telemetry_Report.pdf"]
+
+    style EDGE_LAYER fill:#1e293b,stroke:#3b82f6,stroke-width:1px,color:#fff
+    style MATLAB_PIPELINE fill:#0f172a,stroke:#10b981,stroke-width:1px,color:#fff
+    style D fill:#334155,stroke:#f59e0b,stroke-width:1px,color:#fff
+    style H fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff
+```
 
 
 \## 📊 Analytics \& Visualizations
