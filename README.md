@@ -56,6 +56,7 @@ Modern vehicle diagnostics and performance engineering rely heavily on clean, ti
 
 The project implements an end-to-end edge-to-analytics pipeline, collecting telemetry data from physical/simulated automotive ECUs and running DSP and kinematic gear classification inside MATLAB.
 
+** Operating diagram for [Automotive Telemetry Acquisition System] project
 ```mermaid
 flowchart TD
     subgraph EDGE_LAYER ["Hardware & Edge Layer"]
